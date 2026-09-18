@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  demoapi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:8080
+      ConnectionStrings__DefaultConnection: "Data Source=/app/data/DemoAPI.db"
+    volumes:
+      - demoapi_data:/app/data
+
+volumes:
+  demoapi_data:
